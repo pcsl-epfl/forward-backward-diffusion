@@ -9,11 +9,11 @@ This repository is based on [openai/guided-diffusion](https://github.com/openai/
 
 The experiments take starting images as inputs, in this case the validation set of ImageNet from [ILSVRC2012](https://www.image-net.org/challenges/LSVRC/2012/) `datasets/ILSVRC2012/validation`.
 The backward diffusion process is run with the [256x256 unconditional model](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/256x256_diffusion_uncond.pt) trained by OpenAI.
-The diffusion process is resampled to 250 steps from the 1000 initial ones for speeding up the reverse process. The forward-backward experiment takes the argument `--step_reverse` between 0 and 250 indicating the time step at which the resampled diffusion process is reversed.
+The diffusion process is resampled to 250 steps from the 1000 initial ones to speed up the reverse process. The forward-backward experiment takes the argument `--step_reverse` between 0 and 250 indicating the time step at which the resampled diffusion process is reversed.
 The output images are saved in `results/diffused_ILSVRC2012_validation`.
 Additional arguments are:
 * `--num_classes` the number of classes to be considered (from 1 to 1000);
-* `--num_per_class` the number of images per class;
+* `--num_per_class` the number of images per class.
 
 For example, the following script creates 10,000 images (10 per ImageNet1k class) reverting the diffusion prcess at the midpoint of the total time duration.
 
